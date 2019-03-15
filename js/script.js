@@ -112,16 +112,31 @@ window.addEventListener('DOMContentLoaded', function() {
         close = document.querySelector('.popup-close');
 
     more.addEventListener('click', function() {
-        overlay.style.dispaly = 'block';
+        overlay.style.display = 'block';
         this.classList.add('more-splash');
+        document.body.style.overflow = 'hidden'; 
+        //запрещаем прокрутку фона при открытом модальном окне
     });
 
     close.addEventListener('click', function() {
-        overlay.style.dispaly = 'none';
+        overlay.style.display = 'none';
         more.classList.remove('more-splash');
+        document.body.style.overflow = '';
     });
     
-   
+    let descriptionBtn = document.querySelectorAll('.description-btn'); 
+    //используем селекторолл так как в проекте много классов .description-btn 
+    //и работаем с массивом кнопок
+
+    descriptionBtn.forEach(function (item) {
+        //перебираем массив конопок .description-btn
+        item.addEventListener('click', function() {
+            //console.log(item)
+        overlay.style.display = 'block';
+        this.classList.add('more-splash');
+        document.body.style.overflow = 'hidden';
+        });
+    });     
 });
 
 
